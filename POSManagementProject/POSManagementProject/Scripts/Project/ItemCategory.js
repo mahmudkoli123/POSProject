@@ -37,8 +37,11 @@ var DeleteItemCategory = function () {
 
             $("#confirmDeleteModal").modal("hide");
             $("#row_" + sl).remove();
-            $.notify("Item Category Deleted","error");
+            $.notify("Item Category Deleted", "error");
+            
+            window.location.reload(true);
         }
 
     });
+
 }

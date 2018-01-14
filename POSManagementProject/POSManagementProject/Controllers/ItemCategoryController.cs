@@ -20,7 +20,7 @@ namespace POSManagementProject.Controllers
         // GET: ItemCategory
         public ActionResult Index()
         {
-            ModelVm.ItemCategories = itemCategoryDa.GetItemCategoryList();
+            ModelVm.ItemCategories = itemCategoryDa.GetItemCategoryList().OrderByDescending(x => x.Date).ToList();
             return View(ModelVm.ItemCategories);
         }
 

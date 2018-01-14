@@ -1,6 +1,7 @@
 ﻿@model POSManagementProject.Models.ViewModels.ItemCategoryVM
 
 <div>
+    
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Name)
@@ -27,6 +28,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayName("Parent Name")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Parent.Name)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Date)
         </dt>
 
@@ -34,15 +43,8 @@
             @Html.DisplayFor(model => model.Date)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ParentId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ParentId)
-        </dd>
-
     </dl>
+
 </div>
 
 

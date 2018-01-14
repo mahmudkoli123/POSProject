@@ -69,6 +69,7 @@ namespace POSManagementProject.DAL
         public ItemCategoryVM FindItemCategory(long? id)
         {
             var item = dbContext.ItemCategories.Find(id);
+            var itemParent = dbContext.ItemCategories.Find(item.ParentId);
             ItemCategoryVM itemVm = null;
 
             if (item != null)
@@ -80,7 +81,8 @@ namespace POSManagementProject.DAL
                     Description = item.Description,
                     Image = item.Image,
                     Date = item.Date,
-                    ParentId = item.ParentId
+                    ParentId = item.ParentId,
+                    Parent = itemParent
                 };
             }
 

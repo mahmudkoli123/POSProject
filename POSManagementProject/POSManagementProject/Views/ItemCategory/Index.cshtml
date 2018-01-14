@@ -13,7 +13,6 @@
         <th>@Html.DisplayName("SL")</th>
         <th>@Html.DisplayNameFor(model => model.Name)</th>
         <th>@Html.DisplayNameFor(model => model.Code)</th>
-        <th>@Html.DisplayNameFor(model => model.Description)</th>
         <th>@Html.DisplayNameFor(model => model.Date)</th>
         <th>Action</th>
     </tr>
@@ -27,7 +26,6 @@
             <td>@Html.DisplayFor(modelItem => sl)</td>
             <td>@Html.DisplayFor(modelItem => item.Name)</td>
             <td>@Html.DisplayFor(modelItem => item.Code)</td>
-            <td>@Html.DisplayFor(modelItem => item.Description)</td>
             <td>@Html.DisplayFor(modelItem => item.Date)</td>
             <td>
                 <a class="btn btn-primary btn-sm" onclick="ItemCategoryDetails(@item.Id)"
@@ -53,7 +51,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>Item Category Details</h3>
+                <h3 class="text-primary">Item Category Details</h3>
             </div>
             <div class="modal-body" id="detailsModalContent">
             </div>
@@ -70,9 +68,9 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>Confirmation</h3>
+                <h3 class="text-danger">Confirmation</h3>
             </div>
-            <div class="modal-body">
+            <div class="modal-body text-center">
                 <h5>Are you sure want to delete this item category ? </h5>
             </div>
             <div class="modal-footer">
