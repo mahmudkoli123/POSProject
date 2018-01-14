@@ -1,0 +1,102 @@
+﻿@model IEnumerable<POSManagementProject.Models.EntityModels.ItemCategory>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@Html.ActionLink("Add Item Category","Create",null,new {@class="btn btn-primary"})
+<br/><br /><br/>
+
+<table class="table table-striped table-hover table-bordered" id="itemCategoryTable">
+    <thead>
+    <tr>
+        <th>@Html.DisplayName("SL")</th>
+        <th>@Html.DisplayNameFor(model => model.Name)</th>
+        <th>@Html.DisplayNameFor(model => model.Code)</th>
+        <th>@Html.DisplayNameFor(model => model.Description)</th>
+        <th>@Html.DisplayNameFor(model => model.Date)</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    @{ int sl = 0; }
+    @foreach (var item in Model)
+    {
+        sl++;
+        <tr id="row_@sl">
+            <td>@Html.DisplayFor(modelItem => sl)</td>
+            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+            <td>@Html.DisplayFor(modelItem => item.Code)</td>
+            <td>@Html.DisplayFor(modelItem => item.Description)</td>
+            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+            <td>
+                <a class="btn btn-primary btn-sm" onclick="ItemCategoryDetails(@item.Id)"
+                   href='#'>
+                    <i class="fa fa-info-circle fa-lg"></i>
+                </a>
+                <a class="btn btn-success btn-sm"
+                   href='@Url.Action("Edit", "ItemCategory", new {id = item.Id})'>
+                    <i class="fa fa-pencil fa-lg"></i>
+                </a>
+                <a class="btn btn-danger btn-sm" onclick="ConfirmDeleteItemCategory(@item.Id,@sl)" 
+                   href="#" >
+                    <i class="fa fa-trash fa-lg"></i>
+                </a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<!--Start Details Modal -->
+<div class="modal fade" id="detailsModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Item Category Details</h3>
+            </div>
+            <div class="modal-body" id="detailsModalContent">
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-default" data-dismiss="modal">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Details Modal -->
+
+<!-- Start Delete Modal -->
+<div class="modal fade" id="confirmDeleteModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Confirmation</h3>
+            </div>
+            <div class="modal-body">
+                <h5>Are you sure want to delete this item category ? </h5>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-default" data-dismiss="modal">Cancel</a>
+                <a href="#" class="btn btn-danger" onclick="DeleteItemCategory()">Confirm</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" id="hiddenItemCategoryId" />
+<input type="hidden" id="hiddenItemCategorySl" />
+<!-- End Delete Modal -->
+
+<link href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet"/>
+
+@section scripts
+{
+    <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#itemCategoryTable').DataTable();
+        });
+    </script>
+
+    <script src="~/Scripts/Project/ItemCategory.js"></script>
+}
