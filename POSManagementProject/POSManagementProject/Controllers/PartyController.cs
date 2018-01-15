@@ -23,7 +23,6 @@ namespace POSManagementProject.Controllers
 
         public ActionResult Create()
         {
-            ModelVm.CheckList = partyDa.GetPartyTypeCheckList();
             ModelVm.Code = partyDa.GetPartyCode();
             return View(ModelVm);
         }
@@ -34,7 +33,6 @@ namespace POSManagementProject.Controllers
         {
             itemVm.Date = DateTime.Now;
             itemVm.Image = imageData.ImageConvertToByte(ItemCategoryFile);
-            itemVm.Type = partyDa.GetPartyType(itemVm.CheckList);
 
             if (ModelState.IsValid)
             {
@@ -43,8 +41,7 @@ namespace POSManagementProject.Controllers
                     return RedirectToAction("Index");
                 }
             }
-
-            ModelVm.CheckList = partyDa.GetPartyTypeCheckList();
+            
             ModelVm.Code = partyDa.GetPartyCode();
             return View(ModelVm);
         }

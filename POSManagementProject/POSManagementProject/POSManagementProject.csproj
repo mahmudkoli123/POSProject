@@ -156,7 +156,10 @@
     <Compile Include="Controllers\OrganizationController.cs" />
     <Compile Include="Controllers\PartyController.cs" />
     <Compile Include="DAL\BranchDAL.cs" />
-    <Compile Include="Models\CheckBoxModel.cs" />
+    <Compile Include="Migrations\201801150728325_partyChange.cs" />
+    <Compile Include="Migrations\201801150728325_partyChange.Designer.cs">
+      <DependentUpon>201801150728325_partyChange.cs</DependentUpon>
+    </Compile>
     <Compile Include="DAL\EmployeeDAL.cs" />
     <Compile Include="DAL\ExpenseCategoryDAL.cs" />
     <Compile Include="DAL\ExpenseItemDAL.cs" />
@@ -338,6 +341,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801091759043_partyAdd.resx">
       <DependentUpon>201801091759043_partyAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801150728325_partyChange.resx">
+      <DependentUpon>201801150728325_partyChange.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -33,30 +33,6 @@ namespace POSManagementProject.DAL
 
             return string.Format("{0:0000000000}", (code + 1));
         }
-        public List<CheckBoxModel> GetPartyTypeCheckList()
-        {
-            var list = new List<CheckBoxModel>()
-            {
-                new CheckBoxModel(){Id = 1,Name = "Customer",Value = "c",Checked = false},
-                new CheckBoxModel(){Id = 2,Name = "Supplier",Value = "s",Checked = false}
-            };
-
-            return list;
-        }
-        public string GetPartyType(List<CheckBoxModel> list)
-        {
-            var value = "";
-
-            foreach (var li in list)
-            {
-                if (li.Checked)
-                {
-                    value = value + li.Value + ",";
-                }
-            }
-
-            return value.TrimEnd(',');
-        }
 
         public bool IsPartySaved(PartyVM itemVm)
         {
@@ -67,9 +43,10 @@ namespace POSManagementProject.DAL
                 Contact = itemVm.Contact,
                 Address = itemVm.Address,
                 Email = itemVm.Email,
-                Type = itemVm.Type,
                 Image = itemVm.Image,
-                Date = itemVm.Date
+                Date = itemVm.Date,
+                IsCustomer = itemVm.IsCustomer,
+                IsSupplier = itemVm.IsSupplier
             };
 
             dbContext.Parties.Add(item);

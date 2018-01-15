@@ -25,18 +25,16 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Type, new { @class = "control-label col-md-3" })
+                    @Html.Label("Party Type", new { @class = "control-label col-md-3" })
                     <div class="col-md-9">
-                        @for (int i = 0; i < Model.CheckList.Count; i++)
-                        {
-                            <label class="checkbox-inline">
-                                @Html.CheckBoxFor(model => model.CheckList[i].Checked)
-                                @Html.HiddenFor(model => model.CheckList[i].Id)
-                                @Html.HiddenFor(model => model.CheckList[i].Value)
-                                @Html.DisplayFor(model => model.CheckList[i].Name)
-                            </label>
-                        }
-                        @Html.ValidationMessageFor(model => model.Type, "", new {@class = "text-danger"})
+                        <label class="checkbox-inline ">
+                            @Html.CheckBoxFor(model => model.IsCustomer)
+                            @Html.DisplayNameFor(model => model.IsCustomer)
+                        </label>
+                        <label class="checkbox-inline ">
+                            @Html.CheckBoxFor(model => model.IsSupplier)
+                            @Html.DisplayNameFor(model => model.IsSupplier)
+                        </label>
                     </div>
                 </div>
                 <div class="form-group">
